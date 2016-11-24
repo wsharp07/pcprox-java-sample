@@ -17,7 +17,7 @@ public final class PcProxSO {
     public static int setDeviceSearchType(int devSearchType) {
         return IPcProxSO.INSTANCE._Z21pcprox_SetDevTypeSrchs(devSearchType);
     }
-    public static int beepNow(byte count, int beepType) {
+    public static int beepNow(int count, int beepType) {
         return IPcProxSO.INSTANCE._Z14pcprox_BeepNowhi(count, beepType);
     }
     public static int getDeviceCount(){

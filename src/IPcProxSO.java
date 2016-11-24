@@ -9,6 +9,6 @@ public interface IPcProxSO extends Library {
     byte _Z24pcprox_GetQueuedID_indexs(int index);
     int _Z13GetLastLibErrv();
     int _Z21pcprox_SetDevTypeSrchs(int devSearchType);
-    int _Z14pcprox_BeepNowhi(byte count, int beepType);
+    int _Z14pcprox_BeepNowhi(int count, int beepType);
     int _Z16pcprox_GetDevCntv();
 }

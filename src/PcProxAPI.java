@@ -28,6 +28,10 @@ public class PcProxAPI {
         return PcProxSO.getLastLibErr();
     }
 
+    public void beepNow(int count, int beepType) {
+        PcProxSO.beepNow(count,beepType);
+    }
+
     public String getCardId() {
 
         byte[] byteArray = new byte[36];

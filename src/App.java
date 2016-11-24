@@ -55,6 +55,7 @@ public class App {
 
                 if (isConnected) {
                     System.out.println("Ready to accept card scan...");
+                    api.beepNow(2,0);
                 }
             }
 
