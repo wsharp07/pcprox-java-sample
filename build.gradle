@@ -3,6 +3,8 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 
+sourceCompatibility = 1.8
+
 // Set the directory for sources
 sourceSets.main.java.srcDirs = ['src']
 
