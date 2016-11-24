@@ -1,4 +1,5 @@
 # PcProx Java Sample
+[![Build Status](https://travis-ci.org/wsharp07/pcprox-java-sample.svg?branch=master)](https://travis-ci.org/wsharp07/pcprox-java-sample)
 
 A Java console application for interacting with pcProx card readers. Tested and built on Ubuntu 16.04 64-bit.
 
