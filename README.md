@@ -9,7 +9,7 @@ A Java console application for interacting with pcProx card readers. Tested and 
 ### Building and running the app
 
 ```bash
-sudo ./run.sh
+sudo ./gradlew run
 ```
 
 ### Side notes
