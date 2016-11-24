@@ -12,7 +12,7 @@ sourceSets.main.java.srcDirs = ['src']
 mainClassName = "App"
 
 // Define JVM Args
-applicationDefaultJvmArgs = ["-Djava.library.path=./lib", "-Djna.library.path=./lib"]
+applicationDefaultJvmArgs = ["-Djava.library.path=./lib", "-Djna.library.path=./lib", "-Dlog4j.configurationFile=./log4j2.xml"]
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -28,6 +28,8 @@ jar {
 // Install dependencies
 dependencies {
     compile 'net.java.dev.jna:jna:4.2.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
     testCompile 'junit:junit:4.12'
 }
 
