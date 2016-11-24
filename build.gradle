@@ -1,0 +1,33 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+// Set the directory for sources
+sourceSets.main.java.srcDirs = ['src']
+
+// Define the main class
+mainClassName = "App"
+
+// Define JVM Args
+applicationDefaultJvmArgs = ["-Djava.library.path=./lib", "-Djna.library.path=./lib"]
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+// Define what the JAR looks like
+jar {
+    baseName = 'pcprox-java-sample'
+    version =  '0.1.0'
+}
+
+// Install dependencies
+dependencies {
+    compile 'net.java.dev.jna:jna:4.2.2'
+    testCompile 'junit:junit:4.12'
+}
+
+// If you don't use LD_PRELOAD you will get hid errors thrown from pcProxAPI
+run.doFirst { environment 'LD_PRELOAD', './lib/libhidapi-hidraw.so' }
