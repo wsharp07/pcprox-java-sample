@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pcprox-java-sample.iml" filepath="$PROJECT_DIR$/pcprox-java-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pcprox-java-sample.iml" filepath="$PROJECT_DIR$/.idea/modules/pcprox-java-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pcprox-java-sample_main.iml" filepath="$PROJECT_DIR$/.idea/modules/pcprox-java-sample_main.iml" group="pcprox-java-sample" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pcprox-java-sample_test.iml" filepath="$PROJECT_DIR$/.idea/modules/pcprox-java-sample_test.iml" group="pcprox-java-sample" />
     </modules>
   </component>
 </project>
