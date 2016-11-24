@@ -2,29 +2,30 @@ import com.sun.jna.Library;
 import com.sun.jna.Native;
 
 public class App {
-    public interface pcProxSO extends Library {
-        pcProxSO INSTANCE = (pcProxSO) Native.loadLibrary("pcProxAPI", pcProxSO.class);
-        int _Z10usbConnectv();
-        int _Z17pcprox_usbConnectv();
-    }
 
-    public static void main (String[] args) {
+    static void loadLibs() {
+        System.loadLibrary("hidapi-hidraw");
+    }
+    static void writeJavaLibPaths(){
         String javaLibPath = System.getProperty("java.library.path");
         String jnaLibPath = System.getProperty("jna.library.path");
 
-        System.out.println("Starting the app");
-
         System.out.println("Java.library.path = '" + javaLibPath + "'");
         System.out.println("Jna.library.path = '" + jnaLibPath + "'");
+    }
+    public static void main (String[] args) {
+        System.out.println("Starting the app");
+        writeJavaLibPaths();
+        loadLibs();
 
-        System.loadLibrary("hidapi-hidraw");
-        //System.loadLibrary("pcProxAPI");
-
+        PcProxAPI api = new PcProxAPI();
         int count = 1;
         while (count <= 10) {
 
-            int result = pcProxSO.INSTANCE._Z17pcprox_usbConnectv();
+            boolean result = api.connect();
             System.out.println("[Attempt " + count + "] USB Connect Result: " + result);
+
+            if (result) break;
 
             try {
                 Thread.sleep(1000);
@@ -33,6 +34,8 @@ public class App {
             }
             count++;
         }
+
+        api.disconnect();
 
         System.out.println("Done");
     }
