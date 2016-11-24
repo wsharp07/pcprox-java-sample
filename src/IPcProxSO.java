@@ -6,7 +6,7 @@ public interface IPcProxSO extends Library {
     int _Z17pcprox_usbConnectv();
     int _Z13USBDisconnectv();
     int _Z18pcprox_GetQueuedIDss(int clearUID, int clearHold);
-    int _Z24pcprox_GetQueuedID_indexs(int index);
+    byte _Z24pcprox_GetQueuedID_indexs(int index);
     int _Z13GetLastLibErrv();
     int _Z21pcprox_SetDevTypeSrchs(int devSearchType);
     int _Z14pcprox_BeepNowhi(byte count, int beepType);

@@ -8,7 +8,7 @@ public final class PcProxSO {
     public static int getQueuedId(int clearUID, int clearHold) {
         return IPcProxSO.INSTANCE._Z18pcprox_GetQueuedIDss(clearUID, clearHold);
     }
-    public static int getQueuedIdIndex(int index) {
+    public static byte getQueuedIdIndex(int index) {
         return IPcProxSO.INSTANCE._Z24pcprox_GetQueuedID_indexs(index);
     }
     public static int getLastLibErr() {

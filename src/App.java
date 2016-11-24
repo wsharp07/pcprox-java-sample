@@ -1,6 +1,3 @@
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-
 public class App {
 
     static void loadLibs() {
@@ -13,30 +10,58 @@ public class App {
         System.out.println("Java.library.path = '" + javaLibPath + "'");
         System.out.println("Jna.library.path = '" + jnaLibPath + "'");
     }
+
+    static void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void writeGreeting() {
+        System.out.println("\n###");
+        System.out.println("Starting the console");
+        System.out.println("Press CTRL+C to exit");
+        System.out.println("###\n");
+    }
+
     public static void main (String[] args) {
-        System.out.println("Starting the app");
+        boolean isConnected = false;
+        boolean stop = false;
+        PcProxAPI api = new PcProxAPI();
+
         writeJavaLibPaths();
         loadLibs();
+        writeGreeting();
 
-        PcProxAPI api = new PcProxAPI();
-        int count = 1;
-        while (count <= 10) {
+        while (!stop) {
+            if (isConnected) {
 
-            boolean result = api.connect();
-            System.out.println("[Attempt " + count + "] USB Connect Result: " + result);
+                String cardId = api.getCardId();
 
-            if (result) break;
+                if (cardId.isEmpty() == false) {
+                    System.out.println("Card Read: " + cardId);
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                    if (api.getLastError() > 0) {
+                        System.out.println("Lost reader connection");
+                        isConnected = false;
+                    }
+                }
             }
-            count++;
+            else {
+                System.out.println("** Please wait... Trying to connect to reader **");
+                isConnected = api.connect();
+
+                if (isConnected) {
+                    System.out.println("Ready to accept card scan...");
+                }
+            }
+
+            sleep(250);
         }
 
         api.disconnect();
-
         System.out.println("Done");
     }
 }
